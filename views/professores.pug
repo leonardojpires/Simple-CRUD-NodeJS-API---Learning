@@ -1,0 +1,20 @@
+doctype html
+html(lang="pt-PT")
+    head 
+        title= title 
+    body 
+        h1= message 
+        a(href="/")= "Voltar ao Início"
+        br
+        table
+            thead
+                tr
+                    th Nome
+                    th Idade
+                    th E-Mail
+            tbody
+                each professor in professores
+                    tr
+                        td= professor.name
+                        td= professor.age
+                        td= professor.email

@@ -1,0 +1,21 @@
+doctype html
+html(lang="pt-PT")
+    head 
+        title= title 
+        
+    body 
+        h1= message 
+        a(href="/")= "Voltar ao Início"
+        br
+        table
+            thead
+                tr
+                    th Nome
+                    th Idade
+                    th Curso
+            tbody
+                each aluno in alunos
+                    tr
+                        td= aluno.name
+                        td= aluno.age
+                        td= aluno.course
