@@ -106,6 +106,24 @@ app.delete('/professores/:id', function(req, res) {
     });
 });
 
+app.put('/alunos/:id/orientador', (req, res) => {
+    const student_id = req.params.id;
+    const { teacher_id } = req.body;
+
+    const sql = `UPDATE students SET teacher_id = ? WHERE id = ?`;
+    con.query(sql, [teacher_id, student_id], function(err, result) {
+        if (err) return res.status(500).send(err);
+        res.send({ message: "Professor associado ao aluno com sucesso!" });
+    });
+});
+
+app.get('/alunos-orientadores', (req, res) => {
+    const sql = `SELECT students.name AS aluno, IFNULL(teachers.name, 'Sem orientador') AS orientador FROM students LEFT JOIN teachers ON students.teacher_id = teachers.id`;
+    con.query(sql, function(err, result) {
+        if (err) return res.status(500).send(err);
+        res.json(result);
+    });
+});
 
 let server = app.listen(3000, function() {
     console.log(`Servidor a correr na http://localhost:3000`);
