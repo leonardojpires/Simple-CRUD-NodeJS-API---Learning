@@ -8,23 +8,21 @@ html(lang="pt-PT")
         
     body.bg-light
             .container.mt-5
-                h1.text-center.mb4= message
+                h1.text-center.mb-4= message
 
                 a.btn.btn-secondary.mb-3(href="/") Voltar ao Início
 
                 table.table.table-striped.table-hover
                     thead.table-dark
                         tr
-                            th Nome
-                            th Idade
+                            th Nome do Aluno
+                            th Curso
+                            th Nome do Orientador
                             th E-Mail
-                            th.text-center Ações
                     tbody
-                        each professor in professores
+                        each relacao in alunos_professores
                             tr
-                                td= professor.name
-                                td= professor.age
-                                td= professor.email
-                                td.text-center
-                                    a.btn.btn-sm.btn-primary.me-2(href="") Editar
-                                    a.btn.btn-sm.btn-danger.me-2(href="") Apagar
+                                td= relacao.aluno
+                                td= relacao.curso
+                                td= relacao.orientador
+                                td= relacao.email
